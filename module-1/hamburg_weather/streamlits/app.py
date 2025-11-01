@@ -1,12 +1,14 @@
 # Import Python packages
+from credential import params
 import streamlit as st
 import altair as alt
 from snowflake.snowpark.context import get_active_session
+from snowflake.snowpark import Session
 import pandas as pd
 from snowflake.snowpark.functions import col
 
 # Get the current credentials
-session = get_active_session()
+session = Session.builder.configs(params).create()
 
 env = "STAGING"
 # env = "PROD"
